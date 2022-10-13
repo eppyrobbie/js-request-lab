@@ -99,16 +99,21 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
     We'll be updating this function in the next problem.
 */
 
-const repeatMyParam = (str) => {
-    return axios.get('http://localhost:3000/repeat/' + str)
-    .then(response => {
-        return response.data
-    }
 
-    )
-}
 
-document.addEventListener('click', repeatMyParam)
+const repeatMyParam = () => {
+    return axios.get('http://localhost:3000/repeat/' + 'robbie')
+         .then(response => {
+             let repeat = document.getElementById('repeat-text')
+             repeat.textContent = response.data
+             repeat.style.display = 'block'
+         console.log(response.data)
+     })
+     
+ 
+ }
+
+document.querySelector('#repeat-button').addEventListener('click', repeatMyParam)
 
 // PROBLEM 7
 /*
@@ -121,7 +126,7 @@ document.addEventListener('click', repeatMyParam)
 
 // Code in the repeatMyParam function above
 
-document.getElementById('repeat-text')
+
 
 // PROBLEM 8
 /*
@@ -134,7 +139,11 @@ document.getElementById('repeat-text')
 
 // CODE HERE
 
-
+const queryName = () => {
+    axios.get('http://localhost:3000/query-test' + '?name=Robbie')
+    .then(({ data }) => console.log(data))
+}
+document.querySelector('#query-button').addEventListener('click', queryName)
 
 ////////////////
 //INTERMEDIATE//
