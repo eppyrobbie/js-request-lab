@@ -11,6 +11,7 @@
 
 // CODE HERE
 
+let sayHelloButton = document.querySelector('#say-hello-button')
 
 // PROBLEM 2
 /*
@@ -21,6 +22,10 @@
 
 // CODE HERE
 
+sayHelloButton.addEventListener('mouseover', () => {
+    sayHelloButton.style.backgroundColor = 'black';
+    sayHelloButton.style.color = 'white';
+}) 
 
 // PROBLEM 3
 /*
@@ -33,6 +38,10 @@
 
 // CODE HERE
 
+sayHelloButton.addEventListener('mouseout', () => {
+    sayHelloButton.style.backgroundColor = '#EFEFEF';
+    sayHelloButton.style.color = 'black'
+})
 
 // PROBLEM 4
 /*
@@ -54,6 +63,7 @@ const sayHello = () => {
 
 // CODE HERE
 
+sayHelloButton.addEventListener('click', sayHello)
 
 // PROBLEM 5 
 /*
@@ -67,7 +77,10 @@ const sayHello = () => {
 */ 
 
 const ohMy = () => {
-    // YOUR CODE HERE
+    return axios.get('http://localhost:3000/animals')
+    .then(response => {
+        console.log(response.data)
+    })
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -86,9 +99,16 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
     We'll be updating this function in the next problem.
 */
 
-const repeatMyParam = () => {
-    //YOUR CODE HERE
+const repeatMyParam = (str) => {
+    return axios.get('http://localhost:3000/repeat/' + str)
+    .then(response => {
+        return response.data
+    }
+
+    )
 }
+
+document.addEventListener('click', repeatMyParam)
 
 // PROBLEM 7
 /*
@@ -101,7 +121,7 @@ const repeatMyParam = () => {
 
 // Code in the repeatMyParam function above
 
-
+document.getElementById('repeat-text')
 
 // PROBLEM 8
 /*
